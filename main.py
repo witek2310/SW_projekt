@@ -79,7 +79,7 @@ def main(path:str, letters: dict, letters_imgs: dict):
     cv2.createTrackbar("tr4", "testy", 5, 255, callback)
     img = cv2.imread("train_1/"+path)
     img = cv2.resize(img, None, fx=0.3, fy=0.3)
-    cv2.imshow("original img", img)
+    # cv2.imshow("original img", img)
 
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -107,7 +107,7 @@ def main(path:str, letters: dict, letters_imgs: dict):
 
         min_plate_width = image_width // 3
 
-
+        cv2.imshow("testy", closed)
         i = 0
         for contour in contours:
             
@@ -192,7 +192,7 @@ def main(path:str, letters: dict, letters_imgs: dict):
 
                     x,y,w,h= cv2.boundingRect(contour)
                     kp1, des1 = orb.detectAndCompute(dst[y:y+h, x:x+w], None)
-                    cv2.imshow("cut", dst[y:y+h, x:x+w])
+                    # cv2.imshow("cut", dst[y:y+h, x:x+w])
                     for key in letters:
                         if nr_of_holes == 0:
                             if key in one_hole_letters or key in two_hole_letters:
@@ -245,7 +245,7 @@ def main(path:str, letters: dict, letters_imgs: dict):
 
     # Check if enough matches are found
 
-        cv2.imshow("testy", closed)
+        # cv2.imshow("testy", closed)
         key = cv2.waitKey()
     cv2.destroyAllWindows()
     return 
