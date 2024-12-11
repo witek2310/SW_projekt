@@ -1,17 +1,20 @@
 # PROJEKT SW
+## Zadanie
+Zadanie polega na znalezniu na zdjęciu rejestracji samochodu oraz zwróceniu treśni jaka się na niej znajduje.\
+
 
 Cały proces znajdywania rejestracji składa się z 2 kroków:\
 -znalezienie rejestracji\
 -dopasowanie najlepszych liter
 
-## znajdowanie rejestracji
+## Znajdowanie rejestracji
 
 Najpierw obraz jest skalowany do mniejszego oraz zmieniany jest obraz w skali szarośći\
 nastepnie znajdowanie są wszystkie kontury\
 Po znalezieniu konturów, są one przybliżane do prostokątów i jeżeli nie jest to możliwe, kontur jest odrzucany\
 następnie jeżeli kontur zajmuje przynajmnie 1/3 obnrazu i jest wystarczająco duży, to jest przyjmowany jako tablica
 
-## znajdowanie liter
+## Znajdowanie liter
 
 Ta część dla mnie była dużo trudniejsza. Próbowałem różnych sposobów, ale większość nie działała :(.\
 deskryptory oraz matchShapes nie dawała satyfakcjonujących rezulatów.\
@@ -26,6 +29,6 @@ problem też pojawi się w przypadku F na rejestracji i "E" na podstawie czcion
 I tutaj przychodzi na pomoc XOR, który zlicza elemeny które się różnią. I tak w wspomnianym przypadku F na rejestracji oraz E z czcionki otrzymamy liczbę pikseli z dolnej nóżki.\
 Ostatecznie obliczana jest różnica: sum(AND) - sum(XOR) i znajdowana jest litera, która maksymalizuje ten wynik i dodwana jest do listy wraz z najbardziej wysuniętym na lewo punktem litery z rejestracji\
 
-Po przejścu przez wszystkie litery znajdujące się na rejestarcji sortowane są one po lewym punkcie i łączone w stringa.
+Po przejścu przez wszystkie litery znajdujące się na rejestarcji sortowane są one po skrajnie lewym punkcie i łączone w stringa.
 
 Do poprawy jakości działania liczone są "dziury" w literach z rejestracji (funkcja holes) i na tej podstawie odpowiednie litery są brane pod uwagę.
